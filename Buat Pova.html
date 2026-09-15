@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Untuk Pova 🌷</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                    135deg,
+                    #ffe4ec,
+                    #fff7fa
+            );
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.92);
+
+            border-radius: 25px;
+
+            box-shadow:
+                    0 10px 35px rgba(0, 0, 0, 0.12);
+
+            animation: appear 0.8s ease;
+        }
+
+        .flower {
+            font-size: 55px;
+            margin-bottom: 15px;
+
+            animation: float 2.5s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #d7658c;
+            font-size: 26px;
+
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #666;
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 2px solid #f2bfd0;
+
+            border-radius: 12px;
+
+            outline: none;
+
+            text-align: center;
+
+            font-size: 16px;
+
+            margin-bottom: 12px;
+
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: #d7658c;
+
+            box-shadow:
+                    0 0 8px rgba(215, 101, 140, 0.2);
+        }
+
+        button {
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            background: #d7658c;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #c6537b;
+
+            transform: scale(1.03);
+        }
+
+        #error {
+            margin-top: 12px;
+
+            color: #dc5575;
+
+            font-size: 14px;
+        }
+
+        #messagePage {
+            display: none;
+        }
+
+        .message {
+            font-size: 17px;
+
+            color: #555;
+
+            line-height: 1.8;
+        }
+
+        .signature {
+            margin-top: 25px;
+
+            color: #aaa;
+
+            font-size: 13px;
+        }
+
+        .petal {
+            position: fixed;
+
+            top: -30px;
+
+            font-size: 20px;
+
+            pointer-events: none;
+
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+
+            0% {
+                transform:
+                        translateY(0)
+                        rotate(0deg);
+
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                        translateY(110vh)
+                        rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                        translateY(20px)
+                        scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                        translateY(0)
+                        scale(1);
+            }
+        }
+
+        @keyframes float {
+
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ========================= -->
+<!-- HALAMAN PASSWORD -->
+<!-- ========================= -->
+
+<div
+        class="container"
+        id="passwordPage"
+>
+
+    <div class="flower">
+        🌷
+    </div>
+
+
+    <h1>
+        Untuk Pova
+    </h1>
+
+
+    <p>
+
+        Sebelum masuk,
+        <br>
+
+        jawab satu pertanyaan dulu...
+
+        <br><br>
+
+        <b>
+            Siapa orang paling ganteng?
+        </b>
+
+    </p>
+
+
+    <input
+            type="text"
+            id="password"
+            placeholder="Jawabannya..."
+            autocomplete="off"
+    >
+
+
+    <button
+            onclick="checkPassword()"
+    >
+        Masuk 🌸
+    </button>
+
+
+    <div id="error"></div>
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- HALAMAN PESAN -->
+<!-- ========================= -->
+
+<div
+        class="container"
+        id="messagePage"
+>
+
+    <div class="flower">
+        🌸
+    </div>
+
+
+    <h1>
+        Semangat menjalani hari!
+    </h1>
+
+
+    <p class="message">
+
+        Semoga hari ini berjalan
+        dengan lancar.
+
+        <br>
+
+        Semoga banyak hal baik
+        yang datang ke kamu.
+
+        <br>
+
+        Jangan lupa makan,
+        istirahat,
+        dan tetap semangat yaa 🌷
+
+    </p>
+
+
+    <p>
+
+        Have a nice day! 🌼
+
+    </p>
+
+
+    <div class="signature">
+
+        Untuk Pova 🌸
+
+    </div>
+
+</div>
+
+
+
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
+
+<script>
+
+    function checkPassword() {
+
+        // Mengambil jawaban dari input
+        let answer =
+            document
+                .getElementById("password")
+                .value
+                .trim()
+                .toLowerCase();
+
+
+        // Password yang benar
+        if (answer === "raja") {
+
+
+            // Hilangkan halaman password
+            document
+                .getElementById("passwordPage")
+                .style.display = "none";
+
+
+            // Tampilkan halaman pesan
+            document
+                .getElementById("messagePage")
+                .style.display = "block";
+
+
+            // Jalankan animasi bunga
+            createPetals();
+
+
+        } else {
+
+
+            // Jika jawaban salah
+            document
+                .getElementById("error")
+                .innerText =
+                "Hmm... coba pikir-pikir lagi 😌🌷";
+
+        }
+
+    }
+
+
+
+    function createPetals() {
+
+        // Jumlah bunga
+        for (
+            let i = 0;
+            i < 30;
+            i++
+        ) {
+
+
+            // Membuat elemen bunga
+            let petal =
+                document.createElement("div");
+
+
+            petal.classList.add(
+                "petal"
+            );
+
+
+            // Emoji bunga
+            petal.innerText = "🌸";
+
+
+            // Posisi horizontal random
+            petal.style.left =
+                Math.random() * 100 +
+                "vw";
+
+
+            // Kecepatan random
+            petal.style.animationDuration =
+                (3 + Math.random() * 5) +
+                "s";
+
+
+            // Delay random
+            petal.style.animationDelay =
+                Math.random() * 2 +
+                "s";
+
+
+            // Masukkan ke halaman
+            document.body.appendChild(
+                petal
+            );
+
+
+            // Hapus setelah selesai
+            setTimeout(
+                () => {
+                    petal.remove();
+                },
+                9000
+            );
+
+        }
+
+    }
+
+
+
+    // Bisa menekan ENTER
+    document
+        .getElementById("password")
+        .addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    checkPassword();
+
+                }
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>
